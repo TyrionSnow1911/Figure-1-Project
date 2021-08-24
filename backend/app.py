@@ -30,13 +30,19 @@ def create_user_endpoint():
 
 @app.route("", methods=["GET"])
 def get_feed():
-    # parse feed.json, and seed data base
     # pull data from data base and encapsulate in json object
     # send data to front-end
+    pass
+
+
+def seed_database():
+    # read data from feed.json
+    # store in app.db
     pass
 
 
 if __name__ == "__main__":
     if not os.path.exists("app.db"):
         create_all()
+    seed_database()
     app.run(host="0.0.0.0", port=5000, debug=True)
