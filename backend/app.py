@@ -1,7 +1,8 @@
 import uuid
 import os
+import json
 from flask import Flask, request, jsonify
-from models import get_session, User, Profile, create_all
+from models import get_session, User, Profile, FeedData, create_all
 
 
 app = Flask(__name__)
@@ -28,21 +29,38 @@ def create_user_endpoint():
     return jsonify({"return": "success"}), 200
 
 
-@app.route("", methods=["GET"])
-def get_feed():
-    # pull data from data base and encapsulate in json object
-    # send data to front-end
+@app.route("/feed/", methods=["GET"])
+def fetch_feed_data():
     pass
 
 
 def seed_database():
-    # read data from feed.json
-    # store in app.db
-    pass
+    # read data from feed.json and convert to data object
+    cwd = os.getcwd()
+    pathToDataFeed = os.path.join(cwd, "data/feed.json")
+    with open(pathToDataFeed) as f:
+        data = json.load(f)
+
+    # store data in app.db
+    feed = FeedData()
+    count = 0
+    for row in data:
+        session = get_session()
+        feed.row_id = str(count)
+        feed.caption = row["caption"]
+        feed.followers = row["followers"]
+        feed.image_url = row["image_url"]
+        feed.likes = row["likes"]
+        feed.profile_image_url = row["profile_image_url"]
+        feed.title = row["title"]
+        feed.username = row["username"]
+        u = session.merge(feed)
+        session.commit()
+        count += 1
 
 
 if __name__ == "__main__":
     if not os.path.exists("app.db"):
         create_all()
     seed_database()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # app.run(host="0.0.0.0", port=5000, debug=True)
