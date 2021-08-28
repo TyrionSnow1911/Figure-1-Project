@@ -39,12 +39,10 @@ export default class User extends Component {
     };
   }
 
-  //function which is called the first time the component loads
   componentDidMount() {
     this.getUserData();
   }
 
-  //Function to get the User Data from json
   getUserData() {
     axios.get(`http://localhost:5000/user_data`).then((response) => {
       this.setState({ userData: response });
@@ -55,8 +53,6 @@ export default class User extends Component {
     if (!this.state.userData) return <p>Loading data</p>;
 
     if (this.state.userData) {
-      // console.log("logging user state in render.");
-      // console.log(this.state.userData.data);
     }
 
     return (
@@ -70,10 +66,9 @@ export default class User extends Component {
               className="centeralign"
             >
               <CardHeader>
-                <CardTitle componentClass="h3">{user.username}</CardTitle>
+                <CardTitle componentClass="h3">{user.title}</CardTitle>
               </CardHeader>
               <CardBody>
-                <p>{user.title}</p>
                 <p>{user.username}</p>
                 <img
                   onClick={() => this.setState({ selectedUser: user.user_id })}

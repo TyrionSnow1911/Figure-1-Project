@@ -34,20 +34,16 @@ export default class UserDetails extends Component {
     this.state = {};
   }
 
-  //Function which is called when the component loads for the first time
   componentDidMount() {
     this.getUserDetails(this.props.val);
   }
 
-  //Function which is called whenver the component is updated
   componentDidUpdate(prevProps) {
-    //get Customer Details only if props has changed
     if (this.props.val !== prevProps.val) {
       this.getUserDetails(this.props.val);
     }
   }
 
-  //Function to Load the UserDetails data from json.
   getUserDetails(user_id) {
     axios
       .get(`http://localhost:5000/user_details`, {
@@ -72,11 +68,11 @@ export default class UserDetails extends Component {
         <Card style={styles.detailsCard} bsStyle="info" className="centeralign">
           <CardHeader>
             <CardTitle componentClass="h3">
-              {this.state.userDetails.data.data.username}
+              {this.state.userDetails.data.data.title}
             </CardTitle>
           </CardHeader>
           <CardBody>
-            <p>{this.state.userDetails.data.data.title}</p>
+            <p>{this.state.userDetails.data.data.username}</p>
 
             <img
               style={styles.image}
