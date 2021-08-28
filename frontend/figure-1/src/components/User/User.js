@@ -83,13 +83,6 @@ export default class User extends Component {
                   alt="display image"
                 />
                 <br />
-
-                {/* <Button
-                  bsStyle="info"
-                  onClick={() => this.setState({ selectedUser: user.user_id })}
-                >
-                  Click to View Details
-                </Button> */}
               </CardBody>
             </Card>
           ))}

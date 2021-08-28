@@ -22,6 +22,7 @@ const styles = {
     position: "fixed",
     textAlign: "center",
     flexWrap: "wrap",
+    width: "90rem",
     top: 10,
   },
 };
@@ -76,7 +77,7 @@ export default class UserDetails extends Component {
           </CardHeader>
           <CardBody>
             <p>{this.state.userDetails.data.data.title}</p>
-            <p>{this.state.userDetails.data.data.username}</p>
+
             <img
               style={styles.image}
               id="feed-image"
