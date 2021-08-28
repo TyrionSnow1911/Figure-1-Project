@@ -41,30 +41,32 @@ export default class Case extends Component {
     return (
       <div className="addmargin" style={styles.card}>
         <div className="col-md-3">
-          {this.state.caseData.data.data.map((_case) => (
+          {this.state.caseData.data.data.map((caseData) => (
             <Card
               style={{ width: "18rem" }}
               bsStyle="info"
-              key={_case.username}
+              key={caseData.username}
               className="centeralign"
             >
               <br />
               <CardHeader>
                 <CardTitle componentClass="h3">
                   <b>Title: </b>
-                  {_case.title}
+                  {caseData.title}
                 </CardTitle>
               </CardHeader>
               <CardBody>
                 <p>
-                  <b>Username: </b> {_case.username}
+                  <b>Username: </b> {caseData.username}
                 </p>
                 <b>Click image to learn more.</b>
                 <img
-                  onClick={() => this.setState({ selectedCase: _case.case_id })}
+                  onClick={() =>
+                    this.setState({ selectedCase: caseData.case_id })
+                  }
                   style={styles.image}
                   id="feed-image"
-                  src={_case.image_url}
+                  src={caseData.image_url}
                   alt="display image"
                 />
 
