@@ -3,13 +3,12 @@ import unittest
 
 
 class TestRoutes(unittest.TestCase):
-    def test_fetch_user_details(self):
+    def test_fetch_case_details(self):
         print("running fetch user details test...")
-        # user_id = 0
-        url = "http://localhost:5000/user_details"
+        url = "http://localhost:5000/case_details"
         success = None
-        user_id = {"user_id": 0}
-        response = requests.get(url, params=user_id)
+        case_id = {"case_id": 0}
+        response = requests.get(url, params=case_id)
         success = response.json()["success"]
         data = response.json()["data"]
         print(data)
@@ -17,8 +16,8 @@ class TestRoutes(unittest.TestCase):
         self.assertTrue(code == 200, "Correct status code received.")
         self.assertTrue(success == True, "Success equals true.")
 
-    def test_fetch_user_data(self):
-        url = "http://localhost:5000/user_data"
+    def test_fetch_case_data(self):
+        url = "http://localhost:5000/case_data"
         success = None
         response = requests.get(url)
         success = response.json()["success"]

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import User from "./components/User/User";
+import Case from "./components/Case/Case.lazy";
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,13 +20,9 @@ class App extends Component {
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
-          {/* <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Figure-1 Assignment</h1>
-          </header> */}
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/user_data" />} />
-            <Route exact path="/user_data" component={User} />
+            <Route exact path="/" render={() => <Redirect to="/case_data" />} />
+            <Route exact path="/case_data" component={Case} />
           </Switch>
         </div>
       </Router>

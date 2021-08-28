@@ -17,9 +17,9 @@ class Profile(Base):
     user_uuid = Column(Text, ForeignKey(User.user_uuid), primary_key=True)
 
 
-class FeedData(Base):
-    __tablename__ = "feed_data"
-    user_id = Column(Text, primary_key=True)
+class CaseData(Base):
+    __tablename__ = "case_data"
+    case_id = Column(Text, primary_key=True)
     caption = Column(Text)
     followers = Column(Text)
     image_url = Column(Text)
