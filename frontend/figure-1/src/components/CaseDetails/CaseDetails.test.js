@@ -1,14 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import UserDetails from './UserDetails';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import CaseDetails from "../CaseDetails/CaseDetails";
 
-describe('<UserDetails />', () => {
-  test('it should mount', () => {
-    render(<UserDetails />);
-    
-    const userDetails = screen.getByTestId('UserDetails');
+describe("<CaseDetails />", () => {
+  test("it should mount", () => {
+    render(<CaseDetails />);
 
-    expect(userDetails).toBeInTheDocument();
+    const caseDetails = screen.getByTestId("CaseDetails");
+
+    expect(caseDetails).toBeInTheDocument();
   });
 });

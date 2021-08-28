@@ -1,12 +1,12 @@
 /* eslint-disable */
-import UserDetails from './UserDetails';
+import CaseDetails from "./CaseDetails.lazy";
 
 export default {
-  title: "UserDetails",
+  title: "CaseDetails",
 };
 
-export const Default = () => <UserDetails />;
+export const Default = () => <CaseDetails />;
 
 Default.story = {
-  name: 'default',
+  name: "default",
 };

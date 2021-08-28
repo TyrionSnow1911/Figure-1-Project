@@ -1,11 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 
-const LazyUserDetails = lazy(() => import('./UserDetails'));
+const LazyCaseDetails = lazy(() => import("./CaseDetails"));
 
-const UserDetails = props => (
+const CaseDetails = (props) => (
   <Suspense fallback={null}>
-    <LazyUserDetails {...props} />
+    <LazyCaseDetails {...props} />
   </Suspense>
 );
 
-export default UserDetails;
+export default CaseDetails;
