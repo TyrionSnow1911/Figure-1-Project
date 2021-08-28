@@ -19,7 +19,7 @@ class Profile(Base):
 
 class FeedData(Base):
     __tablename__ = "feed_data"
-    row_id = Column(Text, primary_key=True)
+    user_id = Column(Text, primary_key=True)
     caption = Column(Text)
     followers = Column(Text)
     image_url = Column(Text)
