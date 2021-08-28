@@ -1,1 +1,5 @@
-.User {}
+.feed-image {
+  height: 200px;
+  width: 200px;
+  resize: both;
+}

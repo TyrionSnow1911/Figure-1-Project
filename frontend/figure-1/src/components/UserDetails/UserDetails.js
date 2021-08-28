@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-//import { Panel } from "react-bootstrap/lib/Panel";
+
 import axios from "axios";
-import PanelHeading from "react-bootstrap/lib/PanelHeading";
-import PanelTitle from "react-bootstrap/lib/PanelTitle";
-import PanelBody from "react-bootstrap/lib/PanelBody";
+
+import {
+  Card,
+  CardHeader,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardImg,
+} from "reactstrap";
 
 //This Component is a child Component of Users Component
 export default class UserDetails extends Component {
@@ -40,24 +47,26 @@ export default class UserDetails extends Component {
     if (!this.state.userDetails) return <p>Loading Data</p>;
 
     if (this.state.userDetails) {
-      console.log("logging user state in render.");
+      console.log("logging user DETAILS in render.");
       console.log(this.state.userDetails.data);
+      console.log(this.state.userDetails.data.data.username);
+      console.log(this.state.userDetails.data.data.caption);
     }
     return (
       <div className="UserDetails">
-        <div bsstyle="info" className="centeralign">
-          <PanelHeading>
-            <PanelTitle componentClass="h3">
-              {this.state.userDetails.data.username}
-            </PanelTitle>
-          </PanelHeading>
-          <PanelBody>
-            <p>Title : {this.state.userDetails.data.title}</p>
-            <p>Username : {this.state.userDetails.data.username}</p>
-            <p>Image : {this.state.userDetails.data.image_url}</p>
-            <p>Caption : {this.state.userDetails.data.caption}</p>
-          </PanelBody>
-        </div>
+        <Card style={{ width: "18rem" }} bsStyle="info" className="centeralign">
+          <CardHeader>
+            <CardTitle componentClass="h3">
+              {this.state.userDetails.data.data.username}
+            </CardTitle>
+          </CardHeader>
+          <CardBody>
+            <p>Title : {this.state.userDetails.data.data.title}</p>
+            <p>Username : {this.state.userDetails.data.data.username}</p>
+            <p>Image : {this.state.userDetails.data.data.image_url}</p>
+            <p>Caption : {this.state.userDetails.data.data.caption}</p>
+          </CardBody>
+        </Card>
       </div>
     );
   }

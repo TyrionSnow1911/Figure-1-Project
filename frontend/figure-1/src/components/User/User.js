@@ -1,11 +1,25 @@
 import React, { Component } from "react";
-//import { Panel } from "react-bootstrap/lib/Panel";
-import PanelHeading from "react-bootstrap/lib/PanelHeading";
-import PanelTitle from "react-bootstrap/lib/PanelTitle";
-import PanelBody from "react-bootstrap/lib/PanelBody";
 import Button from "react-bootstrap/lib/Button";
 import axios from "axios";
 import UserDetails from "../UserDetails/UserDetails";
+import { Panel } from "react-bootstrap";
+import {
+  Card,
+  CardHeader,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardImg,
+} from "reactstrap";
+
+const styles = {
+  image: {
+    height: 300,
+    width: 300,
+    resize: "both",
+  },
+};
 
 export default class User extends Component {
   constructor(props) {
@@ -31,31 +45,42 @@ export default class User extends Component {
     if (!this.state.userData) return <p>Loading data</p>;
 
     if (this.state.userData) {
-      console.log("logging user state in render.");
-      console.log(this.state.userData.data);
+      // console.log("logging user state in render.");
+      // console.log(this.state.userData.data);
     }
 
     return (
       <div className="addmargin">
         <div className="col-md-3">
           {this.state.userData.data.data.map((user) => (
-            <div bsstyle="info" key={user.username} className="centeralign">
-              <PanelHeading>
-                <PanelTitle componentClass="h3">{user.username}</PanelTitle>
-              </PanelHeading>
-              <PanelBody>
+            <Card
+              style={{ width: "18rem" }}
+              bsStyle="info"
+              key={user.username}
+              className="centeralign"
+            >
+              <CardHeader>
+                <CardTitle componentClass="h3">{user.username}</CardTitle>
+              </CardHeader>
+              <CardBody>
                 <p>{user.title}</p>
                 <p>{user.username}</p>
-                <p>{user.image_url}</p>
-                {/* render image on page instead of url */}
+                <img
+                  style={styles.image}
+                  id="feed-image"
+                  src={user.image_url}
+                  alt="display image"
+                />
+                <br />
+                {/* fix issue with user details not displaying */}
                 <Button
                   bsStyle="info"
                   onClick={() => this.setState({ selectedUser: user.user_id })}
                 >
                   Click to View Details
                 </Button>
-              </PanelBody>
-            </div>
+              </CardBody>
+            </Card>
           ))}
         </div>
         <div className="col-md-6">
