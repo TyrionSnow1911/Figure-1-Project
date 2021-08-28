@@ -3,6 +3,7 @@ import Button from "react-bootstrap/lib/Button";
 import axios from "axios";
 import UserDetails from "../UserDetails/UserDetails";
 import { Panel } from "react-bootstrap";
+import { StickyContainer, Sticky } from "react-sticky";
 import {
   Card,
   CardHeader,
@@ -18,6 +19,15 @@ const styles = {
     height: 300,
     width: 300,
     resize: "both",
+  },
+  card: {
+    display: "flex",
+  },
+  detailsCard: {
+    position: "fixed",
+    textAlign: "center",
+    flexWrap: "wrap",
+    top: 10,
   },
 };
 
@@ -50,7 +60,7 @@ export default class User extends Component {
     }
 
     return (
-      <div className="addmargin">
+      <div className="addmargin" style={styles.card}>
         <div className="col-md-3">
           {this.state.userData.data.data.map((user) => (
             <Card
@@ -66,23 +76,25 @@ export default class User extends Component {
                 <p>{user.title}</p>
                 <p>{user.username}</p>
                 <img
+                  onClick={() => this.setState({ selectedUser: user.user_id })}
                   style={styles.image}
                   id="feed-image"
                   src={user.image_url}
                   alt="display image"
                 />
                 <br />
-                {/* fix issue with user details not displaying */}
-                <Button
+
+                {/* <Button
                   bsStyle="info"
                   onClick={() => this.setState({ selectedUser: user.user_id })}
                 >
                   Click to View Details
-                </Button>
+                </Button> */}
               </CardBody>
             </Card>
           ))}
         </div>
+
         <div className="col-md-6">
           <UserDetails val={this.state.selectedUser} />
         </div>

@@ -12,6 +12,20 @@ import {
   CardImg,
 } from "reactstrap";
 
+const styles = {
+  image: {
+    height: 300,
+    width: 300,
+    resize: "both",
+  },
+  detailsCard: {
+    position: "fixed",
+    textAlign: "center",
+    flexWrap: "wrap",
+    top: 10,
+  },
+};
+
 //This Component is a child Component of Users Component
 export default class UserDetails extends Component {
   constructor(props) {
@@ -54,30 +68,25 @@ export default class UserDetails extends Component {
     }
     return (
       <div className="UserDetails">
-        <Card style={{ width: "18rem" }} bsStyle="info" className="centeralign">
+        <Card style={styles.detailsCard} bsStyle="info" className="centeralign">
           <CardHeader>
             <CardTitle componentClass="h3">
               {this.state.userDetails.data.data.username}
             </CardTitle>
           </CardHeader>
           <CardBody>
-            <p>Title : {this.state.userDetails.data.data.title}</p>
-            <p>Username : {this.state.userDetails.data.data.username}</p>
-            <p>Image : {this.state.userDetails.data.data.image_url}</p>
-            <p>Caption : {this.state.userDetails.data.data.caption}</p>
+            <p>{this.state.userDetails.data.data.title}</p>
+            <p>{this.state.userDetails.data.data.username}</p>
+            <img
+              style={styles.image}
+              id="feed-image"
+              src={this.state.userDetails.data.data.image_url}
+              alt="display image"
+            />
+            <p>{this.state.userDetails.data.data.caption}</p>
           </CardBody>
         </Card>
       </div>
     );
   }
 }
-
-// {
-//   "caption": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
-//   "followers": 46,
-//   "image_url": "http://dummyimage.com/1243x113.png/ff4444/ffffff",
-//   "likes": 411,
-//   "profile_image_url": "http://dummyimage.com/100x100.png/ff4444/ffffff",
-//   "title": "Quam nec dui",
-//   "username": "jcranstone0"
-// },
